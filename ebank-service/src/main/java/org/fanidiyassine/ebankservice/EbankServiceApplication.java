@@ -20,7 +20,7 @@ public class EbankServiceApplication {
 	@Bean
 	CommandLineRunner commandLineRunner(EbankService ebankService) {
 		return args -> {
-			for(int i = 1; i < 3; i++) {
+			for(int i = 1; i <= 3; i++) {
 				for(int j = 0; j < 5; j++) {
 					ebankService.saveBankAccount(BankAccount.builder()
 									.balance(1000+Math.random()*60000)

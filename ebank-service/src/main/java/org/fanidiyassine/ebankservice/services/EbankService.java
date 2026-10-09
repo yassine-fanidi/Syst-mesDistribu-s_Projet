@@ -4,6 +4,8 @@ import org.fanidiyassine.ebankservice.entities.BankAccount;
 import org.fanidiyassine.ebankservice.feign.CustomerRestClient;
 import org.fanidiyassine.ebankservice.models.Customer;
 import org.fanidiyassine.ebankservice.repositories.BankAccountRepository;
+import org.springframework.ai.mcp.annotation.McpTool;
+import org.springframework.ai.mcp.annotation.McpToolParam;
 import org.springframework.stereotype.Service;
 
 import java.util.Date;
@@ -20,16 +22,19 @@ public class EbankService {
         this.customerRestClient = customerRestClient;
     }
 
+    @McpTool(description = "Get all bank accounts")
     public List<BankAccount> getAllBankAccounts() {
         return bankAccountRepository.findAll();
     }
-    public BankAccount getBankAccountById(String id) {
+    @McpTool(description = "Get a bank account by id")
+    public BankAccount getBankAccountById(@McpToolParam(description = "The bank account id") String id) {
         BankAccount bankAccount = bankAccountRepository.findById(id).orElseThrow(()->new RuntimeException("Bank account not found"));
         bankAccount.setCustomer(customerRestClient.getCustomerById(bankAccount.getCustomerId()));
         return bankAccount;
 
     }
-    public BankAccount saveBankAccount(BankAccount bankAccount) {
+    @McpTool(description = "Save a new bank account")
+    public BankAccount saveBankAccount(@McpToolParam(description = "The bank account to save (balance, type, customerId)") BankAccount bankAccount) {
         try {
             Customer customer = customerRestClient.getCustomerById(bankAccount.getCustomerId());
             bankAccount.setId(UUID.randomUUID().toString());
