@@ -4,6 +4,7 @@ import com.zgamelogic.discord.annotations.DiscordController;
 import com.zgamelogic.discord.annotations.DiscordMapping;
 import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
 import org.fanidiyassine.ebankbot.agents.EbankAIAgent;
+import org.springframework.ai.chat.prompt.Prompt;
 
 import java.util.concurrent.CompletableFuture;
 
@@ -25,7 +26,7 @@ public class DiscordBot {
         CompletableFuture.runAsync(() -> {
             try {
                 // L'appel lourd LLM + MCP s'exécute sur un thread séparé
-                String response = ebankAIAgent.chat(query);
+                String response = ebankAIAgent.chat(new Prompt(query));
 
                 // 2. On envoie la réponse en gérant le découpage des 2000 caractères
                 sendSplitMessage(event, response);
