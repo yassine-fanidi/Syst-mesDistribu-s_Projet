@@ -10,3 +10,7 @@
 
 ### Résolution du problème de CORS Policy & Récupération des comptes bancaires depuis le backend
 ![Résolution du problème de CORS Policy & Récupération des comptes bancaires depuis le backend](/Screenshots/img_39.png)
+
+### Gestion d'état de la requête
+![Gestion d'état de la requête](/Screenshots/img_40.png)
+![Gestion d'état de la requête](/Screenshots/img_39.png)
