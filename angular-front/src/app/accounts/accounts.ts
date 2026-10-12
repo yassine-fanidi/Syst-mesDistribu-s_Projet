@@ -1,6 +1,8 @@
 import {Component, inject} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {AsyncPipe} from '@angular/common';
+import {catchError, map, Observable, of} from 'rxjs';
+import {Account, AccountListState, RequestStatus} from '../model/account.model';
 
 @Component({
   selector: 'app-accounts',
@@ -12,5 +14,14 @@ import {AsyncPipe} from '@angular/common';
 })
 export class Accounts {
   private http = inject(HttpClient);
-  accounts$ = this.http.get<any[]>("http://localhost:9999/EBANK-SERVICE/accounts")
+  accounts$ : Observable<AccountListState> = this.http.get<Account[]>("http://localhost:9999/EBANK-SERVICE/accounts")
+    .pipe(
+      map(resp => {
+        return {accounts:resp, status:RequestStatus.SUCCESS}
+      }),
+      catchError((err, caught) => {
+        return of({status: RequestStatus.ERROR, errorMessage: err.statusText})
+      })
+    )
+  protected readonly RequestStatus = RequestStatus;
 }
