@@ -16,7 +16,7 @@ import {LoadingService} from '../services/loading';
 export class Accounts {
   private http = inject(HttpClient);
   public loadingService = inject(LoadingService)
-  accounts$ : Observable<AccountListState> = this.http.get<Account[]>("http://localhost:9999/EBANK-SERVICE/account")
+  accounts$ : Observable<AccountListState> = this.http.get<Account[]>("http://localhost:9999/EBANK-SERVICE/accounts")
     .pipe(
       map(resp => {
         return {accounts:resp, status:RequestStatus.SUCCESS}

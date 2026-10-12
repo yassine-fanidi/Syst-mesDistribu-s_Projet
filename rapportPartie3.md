@@ -14,3 +14,8 @@
 ### Gestion d'état de la requête
 ![Gestion d'état de la requête](/Screenshots/img_40.png)
 ![Gestion d'état de la requête](/Screenshots/img_39.png)
+
+### Création de l'interface BotUi et test des outcomes & réglage du problème d'intercepteur
+![Création de l'interface BotUi et test des outcomes & réglage du problème d'intercepteur](/Screenshots/img_41.png)
+![Création de l'interface BotUi et test des outcomes & réglage du problème d'intercepteur](/Screenshots/img_42.png)
+![Création de l'interface BotUi et test des outcomes & réglage du problème d'intercepteur](/Screenshots/img_43.png)
