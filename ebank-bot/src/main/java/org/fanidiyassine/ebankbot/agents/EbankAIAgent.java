@@ -6,6 +6,7 @@ import org.springframework.ai.chat.memory.ChatMemory;
 import org.springframework.ai.chat.prompt.Prompt;
 import org.springframework.ai.tool.ToolCallbackProvider;
 import org.springframework.stereotype.Service;
+import reactor.core.publisher.Flux;
 
 import static org.springframework.ai.chat.memory.ChatMemory.CONVERSATION_ID;
 
@@ -27,5 +28,11 @@ public class EbankAIAgent {
         return chatClient.prompt(prompt)
                 .advisors(advisorSpec -> advisorSpec.param(CONVERSATION_ID, "default-session"))
                 .call().content();
+    }
+
+    public Flux<String> chatStream(Prompt prompt){
+        return chatClient.prompt(prompt)
+                .advisors(advisorSpec -> advisorSpec.param(CONVERSATION_ID, "default-session"))
+                .stream().content();
     }
 }
