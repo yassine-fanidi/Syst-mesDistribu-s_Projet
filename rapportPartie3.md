@@ -19,3 +19,7 @@
 ![Création de l'interface BotUi et test des outcomes & réglage du problème d'intercepteur](/Screenshots/img_41.png)
 ![Création de l'interface BotUi et test des outcomes & réglage du problème d'intercepteur](/Screenshots/img_42.png)
 ![Création de l'interface BotUi et test des outcomes & réglage du problème d'intercepteur](/Screenshots/img_43.png)
+
+### ChatBot Streaming
+![ChatBot Streaming](/Screenshots/img_44.png)
+![ChatBot Streaming](/Screenshots/img_45.png)
